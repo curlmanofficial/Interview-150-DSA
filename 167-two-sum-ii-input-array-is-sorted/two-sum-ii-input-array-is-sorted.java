@@ -6,11 +6,11 @@ class Solution {
 
         while(left < right ){
 
-    
+            int sum = numbers[left] + numbers[right];
 
-            if((numbers[left] + numbers[right]) == target ){
+            if(sum == target ){
                 return new int[]{left+1 , right+1};
-            }else if( (numbers[left] + numbers[right]) < target){
+            }else if( sum < target){
                 left++;
             }else{
                 right--;
