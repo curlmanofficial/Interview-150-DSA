@@ -8,7 +8,7 @@ class Solution {
         for (int i = 1; i < n; i++) {
             int num = nums[i];
             if (num < 0) {
-                // swap, since multiplying by negative flips max/min
+                
                 int temp = curMax;
                 curMax = curMin;
                 curMin = temp;
