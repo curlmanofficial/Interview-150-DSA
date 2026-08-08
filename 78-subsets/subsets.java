@@ -13,7 +13,7 @@ class Solution {
 
         // backtracking
 
-        output.remove(output.size()-1);
+        output.remove(output.size()-1);// humye bhi use karsakte h (output.removeLast)
 
         solve(nums , index+1 , output ,ans);
 
