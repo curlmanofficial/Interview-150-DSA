@@ -6,9 +6,7 @@ class Solution {
         if(target == 0){
             ans.add(new ArrayList(output));
             return;
-        }else if(index >= candidates.length){
-            return;
-        }else if(target < 0){
+        }else if(index >= candidates.length || target < 0){
             return;
         }
 
