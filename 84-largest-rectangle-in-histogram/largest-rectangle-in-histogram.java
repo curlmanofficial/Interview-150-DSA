@@ -8,51 +8,41 @@ class Solution {
         int[] right = new int[n];
 
         //next smalest element in left side 
-       for(int i = 0 ; i < n ; i++ ){
+        for (int i = 0; i < n; i++) {
 
-         while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {
+            while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {
+                stack.pop();
+            }
+
+            left[i] = stack.isEmpty() ? -1 : stack.peek();
+            stack.push(i);
+
+        }
+
+        while (!stack.isEmpty()) {
             stack.pop();
         }
 
-        if (stack.isEmpty()) {
-            left[i] = -1;
-        } else {
-            left[i] = stack.peek();
-        }
-        stack.push(i);
+        // for right side 
 
-       }
+        for (int i = n - 1; i >= 0; i--) {
 
-       while(!stack.isEmpty()){
-            stack.pop();
-       }
+            while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {
+                stack.pop();
+            }
+            right[i] = stack.isEmpty() ? n : stack.peek();
 
-       // for right side 
+            stack.push(i);
 
-       for(int i = n-1 ; i >= 0 ; i-- ){
-
-         while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {
-            stack.pop();
         }
 
-        if (stack.isEmpty()) {
-            right[i] = n;
-        } else {
-            right[i] = stack.peek();
+        for (int i = 0; i < n; i++) {
+            int width = right[i] - left[i] - 1;
+            int currAns = heights[i] * width;
+
+            ans = Math.max(ans, currAns);
+
         }
-
-        stack.push(i);
-
-       }
-
-       for(int i = 0 ; i < n ;i++){
-        int width = right[i] - left[i] - 1;
-        int currAns = heights[i] * width;
-
-        ans = Math.max(ans , currAns);
-
-
-       }
 
         return ans;
     }
