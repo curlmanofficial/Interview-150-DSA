@@ -18,9 +18,7 @@ class Solution {
                 ans += rightmax - height[e];
                 e--; 
             }
-  
-        }
-         
+       } 
         return ans;
 
     }
